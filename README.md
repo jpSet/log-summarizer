@@ -26,3 +26,9 @@ set ANTHROPIC_API_KEY=your-key-here
 ```
 python summarized_log.py samples\sample_ticket_log.txt
 ```
+
+## Screenshot
+```
+<img width="2909" height="1362" alt="{957FEB54-1925-4B47-9FE4-877C188ACCEF}" src="https://github.com/user-attachments/assets/dfb2bb62-629b-464f-b9bf-d6b1a65f9d07" />
+
+```
