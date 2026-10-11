@@ -1,0 +1,36 @@
+Ticket #4021
+Opened: 2026-08-16 09:14
+Reporter: M. Silva
+Priority: Medium
+
+Subject: Extra Hours request stuck in "Pending Manager Approval"
+
+Description:
+Employee submitted an extra hours request on 2026-08-14 for 6 hours
+(Saturday shift, Packaging department). Request has remained in
+"Pending Manager Approval" status for over 48 hours. Manager confirms
+they approved it via the dashboard, but status did not update.
+
+Steps to reproduce:
+1. Employee submits extra hours request
+2. Manager opens dashboard, clicks "Approve"
+3. Screen shows success message
+4. Status field in database still shows "Pending"
+
+Notes from support agent (09:40):
+Checked ExtraHoursRequest entity directly in ODC. Status column was
+overwritten back to "Pending" shortly after approval. Possibly related
+to the AI agent output overwriting the Status field during a scheduled
+re-evaluation pass. Escalating to dev team.
+
+Update (11:02):
+Dev confirmed a race condition between the manager approval action and
+the AI agent's background status re-evaluation. Fix identified: guard
+the Status write in the agent flow to skip if a manual approval
+timestamp is newer than the agent's last read. Fix scheduled for next
+deploy.
+
+Ticket closed: 2026-08-16 14:30
+Resolution: Patched agent flow to respect manual approval timestamps.
+Verified fix in staging; request now correctly transitions to
+"ManagerApproved".
