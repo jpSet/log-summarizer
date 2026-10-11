@@ -1,7 +1,19 @@
 import sqlite3
+import textwrap
 import os
 from anthropic import Anthropic
 import argparse
+
+# Outtput format
+def print_summary(row):
+    id_, source_file, summary, created_at = row
+    print("=" * 70)
+    print(f"ID:          {id_}")
+    print(f"Source file: {source_file}")
+    print(f"Created at:  {created_at}")
+    print("-" * 70)
+    print(textwrap.fill(summary, width=70))
+    print("=" * 70)
 
 #Command line argument parsing
 parser=argparse.ArgumentParser(description='Open file with the text to summarize.')
@@ -64,7 +76,8 @@ cursor.execute("SELECT * FROM summaries")
 rows = cursor.fetchall()
 
 for row in rows:
-    print(f"ID: {row[0]}, Source File: {row[1]}, Summary: {row[2]}, Created At: {row[3]}") 
+   # print(f"ID: {row[0]}, Source File: {row[1]}, Summary: {row[2]}, Created At: {row[3]}")
+   print_summary(row)
     
 conn.commit()
 conn.close()
