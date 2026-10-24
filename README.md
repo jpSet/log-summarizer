@@ -27,7 +27,7 @@ export ANTHROPIC_API_KEY=your-key-here
 
 ## Usage
 ```
-python summarized_log.py samples\sample_ticket_log.txt
+python summarized_log.py samples/sample_ticket_log.txt
 ```
 
 ## Example output
