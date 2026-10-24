@@ -16,10 +16,13 @@ git clone https://github.com/jpSet/log-summarizer.git
 cd log-summarizer
 pip install -r requirements.txt
 ```
-
-Set your API key as an environment variable (Windows):
+Set your API key as an environment variable:
 ```
+Windows
 set ANTHROPIC_API_KEY=your-key-here
+
+macOS/Linux
+export ANTHROPIC_API_KEY=your-key-here
 ```
 
 ## Usage
