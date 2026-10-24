@@ -30,7 +30,32 @@ export ANTHROPIC_API_KEY=your-key-here
 python summarized_log.py samples\sample_ticket_log.txt
 ```
 
-## Tool Screenshot
+## Example output
 
-<img width="2909" height="1362" alt="summ_tool" src="https://github.com/user-attachments/assets/f398ff52-4df6-44f6-9df3-585315e66c06" />
+Running the tool on the sample ticket:
 
+```
+python summarized_log.py samples/sample_ticket_log.txt
+```
+
+Each summary is stored in `logsum.db`, and the tool prints the full history. Example entry:
+
+```
+======================================================================
+ID:          5
+Source file: samples/sample_ticket_log.txt
+Created at:  2026-10-24 21:23:07
+----------------------------------------------------------------------
+Employee M. Silva reported that an extra hours request submitted on
+August 14 remained stuck in "Pending Manager Approval" status even
+though the manager had successfully approved it through the dashboard.
+The root cause was a race condition where an AI agent's background re-
+evaluation process was overwriting the Status field back to "Pending"
+after the manager's manual approval. The development team resolved the
+issue by modifying the agent flow to include a guard condition that
+prevents the Status field from being overwritten if a manual approval
+timestamp is newer than the agent's last read time. The fix was
+verified in staging and deployed, allowing the request to correctly
+transition to "ManagerApproved" status.
+======================================================================
+```
