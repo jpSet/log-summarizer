@@ -1,5 +1,5 @@
 # log-summarizer
-Python CLI tool that reads log/text files and uses the Anthropic Claude API to summarize   them.
+Python CLI tool that reads log/text files and uses the Anthropic Claude API to summarize them.
 
 ## Features
 - Summarizes log/ticket files using Claude
