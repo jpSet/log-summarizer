@@ -18,10 +18,10 @@ pip install -r requirements.txt
 ```
 Set your API key as an environment variable:
 ```
-Windows
+# Windows
 set ANTHROPIC_API_KEY=your-key-here
 
-macOS/Linux
+# macOS/Linux
 export ANTHROPIC_API_KEY=your-key-here
 ```
 
